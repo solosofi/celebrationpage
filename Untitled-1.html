@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <style>
+        /* Gradient Background */
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Wobbling Fun Text */
+        h1, h2 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
+            animation: wobble 2s infinite alternate ease-in-out;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 10px;
+        }
+
+        @keyframes wobble {
+            0% { transform: rotate(-2deg) scale(1); }
+            100% { transform: rotate(2deg) scale(1.1); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background-color: hsl(calc(360 * var(--hue)), 100%, 50%);
+            opacity: 0.9;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-10px) rotate(0); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+            opacity: 0.9;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(5); opacity: 0; }
+        }
+
+        /* Subscribe Button */
+        #subscribe {
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            animation: popUp 2s ease-in-out infinite alternate;
+            box-shadow: 0px 0px 20px rgba(255, 0, 102, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @keyframes popUp {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        #subscribe:hover {
+            background: linear-gradient(45deg, #ff3388, #ffee55);
+            transform: scale(1.2);
+            box-shadow: 0px 0px 30px rgba(255, 50, 150, 0.9);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Thanks for watching my videos, Love y'all!! 💜✨</h1>
+    <h2>Have a Blessed Day!!! 🙏✨</h2>
+
+    <button id="subscribe">🎉 Subscribe Now! 🎉</button>
+
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            for (let i = 0; i < 6; i++) { // Create even more confetti 🎉
+                const confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.top = "-10px";
+                confetti.style.setProperty('--hue', Math.random());
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                confetti.style.width = confetti.style.height = Math.random() * 15 + 5 + "px";
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+
+        setInterval(createConfetti, 15); // More confetti at a faster rate 🚀🎊
+
+        // Create fireworks effect
+        function createFirework() {
+            const firework = document.createElement("div");
+            firework.className = "firework";
+            firework.style.left = Math.random() * 100 + "vw";
+            firework.style.top = Math.random() * 50 + "vh";
+            firework.style.animationDuration = "1.5s";
+            document.body.appendChild(firework);
+
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        setInterval(createFirework, 70); // Even more fireworks 🎆
+
+        // Subscribe button click event
+        document.getElementById("subscribe").addEventListener("click", function() {
+            let channelURL = "https://www.youtube.com/channel/UCSfbJNx__kPlQkYGUk1Mk6g?sub_confirmation=1"; 
+            window.location.href = channelURL; // Redirects to YouTube subscription link
+        });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
